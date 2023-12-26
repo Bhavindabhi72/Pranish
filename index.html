@@ -58,7 +58,7 @@
 
   <body class="home-page">
     <!-- Header start -->
-    <header class="fixed-top">
+    <header class="fixed-top" id="top-menu">
       <nav class="navbar navbar-expand-lg">
         <div class="container">
           <a class="navbar-brand" href="#"
@@ -91,7 +91,7 @@
           <div class="collapse navbar-collapse" id="navbarNav">
             <ul class="navbar-nav ms-auto">
               <li class="nav-item">
-                <a class="nav-link active" href="index.html">Home</a>
+                <a class="nav-link active" href="#home">Home</a>
               </li>
               <li class="nav-item">
                 <a class="nav-link" href="#about">About</a>
@@ -119,7 +119,7 @@
     <!-- Header end -->
     <div class="main-wrapper">
       <!-- Banner Start -->
-      <section class="banner">
+      <section class="banner" id="home">
         <div class="container">
           <div class="row">
             <div class="col-lg-7">
@@ -622,7 +622,7 @@
       </section>
       <!-- Eestimonial End -->
       <!-- Contact Start -->
-      <section class="contact" id="contact">
+      <section class="contact section-gap" id="contact">
         <div class="container">
           <div class="row g-4 g-md-5">
             <div class="col-lg-5">
@@ -771,34 +771,49 @@
     <div class="fix-aside-nav">
       <ul>
         <li>
-          <a href="#about" 
-            ><img src="./assets/images/icons/about.svg" alt="About"
-          /><span>About</span></a>
+          <a href="#about"
+            ><img src="./assets/images/icons/about.svg" alt="About" /><span
+              >About</span
+            ></a
+          >
         </li>
         <li>
           <a href="#services"
-            ><img src="./assets/images/icons/service.svg" alt="Services"
-          /><span>Services</span></a>
+            ><img src="./assets/images/icons/service.svg" alt="Services" /><span
+              >Services</span
+            ></a
+          >
         </li>
         <li>
           <a href="#portfolio"
-            ><img src="./assets/images/icons/portfolio.svg" alt="Portfolio"
-          /><span>Portfolio</span></a>
+            ><img
+              src="./assets/images/icons/portfolio.svg"
+              alt="Portfolio"
+            /><span>Portfolio</span></a
+          >
         </li>
         <li>
           <a href="#education"
-            ><img src="./assets/images/icons/education.svg" alt="Education"
-          /><span>Education</span></a>
+            ><img
+              src="./assets/images/icons/education.svg"
+              alt="Education"
+            /><span>Education</span></a
+          >
         </li>
         <li>
           <a href="#client"
-            ><img src="./assets/images/icons/testimonial.svg" alt="Client"
-          /><span>Client</span></a>
+            ><img
+              src="./assets/images/icons/testimonial.svg"
+              alt="Client"
+            /><span>Client</span></a
+          >
         </li>
         <li>
           <a href="#contact"
-            ><img src="./assets/images/icons/contact.svg" alt="Contact"
-          /><span>Contact</span></a>
+            ><img src="./assets/images/icons/contact.svg" alt="Contact" /><span
+              >Contact</span
+            ></a
+          >
         </li>
       </ul>
       <div class="back-top back-to-top">
@@ -903,6 +918,40 @@
         },
         mousewheel: true,
         keyboard: true,
+      });
+    </script>
+
+    <script>
+      $(document).ready(function () {
+        // Handle click on menu item
+        $('.navbar-nav a').on('click', function () {
+          // Smooth scroll to the clicked section
+          $('html, body').animate(
+            {
+              scrollTop: $($.attr(this, 'href')).offset().top,
+            },
+            500
+          );
+          return false;
+        });
+
+        // Change active menu item on scroll
+        $(window).on('scroll', function () {
+          var scrollPos = $(window).scrollTop();
+          $('section').each(function () {
+            var offset = $(this).offset().top - 60;
+            var height = $(this).outerHeight();
+            if (scrollPos >= offset && scrollPos < offset + height) {
+              var targetId = $(this).attr('id');
+              $('.navbar-nav a').removeClass('active');
+              $('.navbar-nav a[href="#' + targetId + '"]').addClass('active');
+              $('.fix-aside-nav a').removeClass('active');
+              $('.fix-aside-nav a[href="#' + targetId + '"]').addClass(
+                'active'
+              );
+            }
+          });
+        });
       });
     </script>
   </body>

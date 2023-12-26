@@ -349,6 +349,12 @@ select:-webkit-autofill {
   transition: 0.3s all;
   position: relative;
 }
+.fix-aside-nav ul li a.active{
+  background: #026460;
+}
+.fix-aside-nav ul li a.active img{
+ filter: brightness(0) invert(1);
+}
 .fix-aside-nav ul li a span{
   display: inline-block;
   position: absolute;
@@ -613,51 +619,11 @@ header .navbar .header-button {
   margin-left: 30px;
   font-weight: 500;
   font-size: 17px;
+  transition: 0.3s all;
 }
 
-header .navbar .search {
-  margin-right: 10px;
-  position: relative;
-}
-header .navbar .search .header-btn {
-  background: #000;
-  position: relative;
-}
-header .navbar .search .header-btn img {
-  filter: brightness(0) invert(1);
-}
-header .navbar .search .header-btn .cancel-image {
-  display: none;
-}
-header .navbar .search.active .search-input {
-  opacity: 1;
-  visibility: visible;
-  top: 50px;
-}
-header .navbar .search.active .search-image {
-  display: none;
-}
-header .navbar .search.active .cancel-image {
-  display: block;
-}
-header .navbar .search .search-input {
-  position: absolute;
-  top: 0;
-  right: 0;
-  opacity: 0;
-  visibility: hidden;
-  width: 250px;
-  transition: 0.3s all;
-  z-index: -1;
-}
-header .navbar .search .search-input .form-group {
-  position: relative;
-}
-header .navbar .search .search-input .form-group img {
-  position: absolute;
-  top: 50%;
-  transform: translateY(-50%);
-  right: 10px;
+header .navbar .header-button:hover{
+  background: #1f312f;
 }
 
 @keyframes slidedown {
@@ -1189,7 +1155,7 @@ header .navbar .search .search-input .form-group img {
 
 .contact {
   background: #fff;
-  padding: 55px 0 45px 0;
+  /* padding: 55px 0 45px 0; */
 }
 
 .contact .main-title h6::before {
